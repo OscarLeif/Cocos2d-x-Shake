@@ -1,0 +1,14 @@
+{
+    "ndk_module_path" :[
+        "C:/Cocos/Cocos2d-x/cocos2d-x-3.10",
+        "C:/Cocos/Cocos2d-x/cocos2d-x-3.10/cocos/prebuilt-mk",
+        "C:/Cocos/Cocos2d-x/cocos2d-x-3.10/cocos",
+        "C:/Cocos/Cocos2d-x/cocos2d-x-3.10/external"
+    ],
+    "copy_resources": [
+        {
+            "from": "../Resources",
+            "to": ""
+        }
+    ]
+}
