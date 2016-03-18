@@ -2,6 +2,9 @@ LOCAL_PATH := $(call my-dir)
 
 include $(CLEAR_VARS)
 
+#$(call import-add-path,$(LOCAL_PATH)/../../cocos2d)
+#(call import-add-path,$(LOCAL_PATH)/../../cocos2d/external)
+#$(call import-add-path,$(LOCAL_PATH)/../../cocos2d/cocos)
 $(call import-add-path,$(LOCAL_PATH)/../../cocos2d/cocos/prebuilt-mk)
 
 LOCAL_MODULE := cocos2dcpp_shared
@@ -10,6 +13,7 @@ LOCAL_MODULE_FILENAME := libcocos2dcpp
 
 LOCAL_SRC_FILES := hellocpp/main.cpp \
                    ../../Classes/AppDelegate.cpp \
+                   ../../Classes/ActionShake.cpp \
                    ../../Classes/HelloWorldScene.cpp
 
 LOCAL_C_INCLUDES := $(LOCAL_PATH)/../../Classes

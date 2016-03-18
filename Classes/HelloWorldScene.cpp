@@ -1,4 +1,5 @@
 #include "HelloWorldScene.h"
+#include "ActionShake.h"
 
 USING_NS_CC;
 
@@ -84,39 +85,8 @@ bool HelloWorld::onTouchBegan(Touch* touch,Event* event)
     float speed = 6.0f;
     float magnitude = 4.f;
 
-    static float elapsed = 0.f;
-    float randomStart = random(-1000.0f, 1000.0f);
+    this->runAction(ActionShake::create(duration,speed,magnitude));
 
-    this->schedule([=](float dt)
-                   {
-
-                       elapsed += dt;
-
-                       float percentComplete = elapsed / duration;
-
-                       // We want to reduce the shake from full power to 0 starting half way through
-                       float damper = 1.0f - clampf(2.0f * percentComplete - 1.0f, 0.0f, 1.0f);
-
-                       // Calculate the noise parameter starting randomly and going as fast as speed allows
-                       float alpha = randomStart + speed * percentComplete;
-
-                       // map noise to [-1, 1]
-                       float x = noise(alpha, 0.0f) * 2.0f - 1.0f;
-                       float y = noise(0.0f, alpha) * 2.0f - 1.0f;
-
-                       x *= magnitude * damper;
-                       y *= magnitude * damper;
-                       this->setPosition(x, y);//Here is where the magic goes
-
-                       if (elapsed >= duration)
-                       {
-                           elapsed = 0;
-                           this->unschedule("Shake");
-                           this->setPosition(Vec2::ZERO);
-                       }
-
-                   }
-                   , interval, CC_REPEAT_FOREVER, 0.f, "Shake");
     return true;
 }
 
